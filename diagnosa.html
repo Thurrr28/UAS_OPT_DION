@@ -1,0 +1,112 @@
+<html>
+<head>
+    <title>Web Diagnosis Hama dan Penyakit Tanaman</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex justify-center space-x-4 py-4 bg-gray-200">
+        <a href="daftarpenyakitdanhama.html" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Daftar Penyakit</a>
+    </div>
+
+    <div class="container mx-auto p-6 bg-white shadow-md mt-6">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Web Diagnosis Hama dan Penyakit Tanaman</h1>
+        
+        <div class="mb-6">
+            <label for="symptom" class="block text-gray-700 font-bold mb-2">Pilih Gejala:</label>
+            <select id="symptom" class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                <option value="">--Pilih Gejala--</option>
+                <option value="daun_berlubang">Daun Berlubang</option>
+                <option value="akar_busuk">Akar Busuk</option>
+                <option value="batang_rusak">Batang Rusak</option>
+                <option value="buah_busuk">Buah Busuk</option>
+                <option value="bunga_menguning">Bunga Menguning</option>
+                <option value="daun_menguning">Daun Menguning</option>
+                <option value="daun_kering">Daun Kering</option>
+                <option value="batang_berlubang">Batang Berlubang</option>
+                <option value="akar_rapuh">Akar Rapuh</option>
+                <option value="buah_dimakan">Buah Dimakan</option>
+            </select>
+        </div>
+
+        <button id="diagnoseBtn" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Diagnosa</button>
+
+        <div id="result" class="mt-6 p-4 bg-gray-100 rounded shadow-md hidden">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Hasil Diagnosa</h2>
+            <p id="diagnosis" class="text-gray-700"></p>
+            <p id="treatment" class="text-gray-700 mt-2"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('diagnoseBtn').addEventListener('click', function() {
+            const symptom = document.getElementById('symptom').value;
+            const resultDiv = document.getElementById('result');
+            const diagnosisP = document.getElementById('diagnosis');
+            const treatmentP = document.getElementById('treatment');
+
+            let diagnosis = '';
+            let treatment = '';
+
+            switch(symptom) {
+                case 'daun_berlubang':
+                    diagnosis = 'Hama: Ulat Api';
+                    treatment = 'Pengendalian: Menanam bunga pukul delapan (Tunera subulata) di sekitar kebun dapat menarik predator alami ulat api, sehingga membantu mengendalikan hama ini.';
+                    break;
+                case 'akar_busuk':
+                    diagnosis = 'Penyakit: Busuk Akar';
+                    treatment = 'Pengendalian: Budidaya yang baik dan persemaian sehat.';
+                    break;
+                case 'batang_rusak':
+                    diagnosis = 'Hama: Tikus';
+                    treatment = 'Pengendalian: Menggunakan burung hantu Tyto alba sebagai predator alami tikus terbukti efektif.';
+                    break;
+                case 'buah_busuk':
+                    diagnosis = 'Penyakit: Busuk Tandan';
+                    treatment = 'Pengendalian: Menejemen Kelembaban, Contohnya Terapkan teknik pemangkasan (pruning) untuk mengurangi kelembaban di sekitar tanaman.';
+                    break;
+                case 'bunga_menguning':
+                    diagnosis = 'Penyakit: Karat Merah';
+                    treatment = 'Pengendalian: Pemangkasan Pelepah, Contohnya Adalah Pemangkasan pelepah yang terkena infeksi sangat penting.';
+                    break;
+                case 'daun_menguning':
+                    diagnosis = 'Penyakit: Garis Kuning';
+                    treatment = 'Pengendalian: Praktik Agronomi Yang Baik Seperti Sanitasi Kebun Dengan Cara Menjaga kebersihan area kebun dengan menghilangkan sisa-sisa tanaman yang terinfeksi.';
+                    break;
+                case 'daun_kering':
+                    diagnosis = 'Penyakit: Stres/Trek';
+                    treatment = 'Pengendalian: Pemupukan Yang Tepat Dengan cara Penggunaan pupuk organik seperti MOAF dapat meningkatkan kesuburan tanah dan ketahanan tanaman terhadap stres.';
+                    break;
+                case 'batang_berlubang':
+                    diagnosis = 'Penyakit: Busuk Pangkal Batang';
+                    treatment = 'Pengendalian: Pemangkasan bagian yang terinfeksi.';
+                    break;
+                case 'akar_rapuh':
+                    diagnosis = 'Hama: Rayap';
+                    treatment = 'Pengendalian: Aplikasi jamur seperti Metarhizium anisopliae dapat digunakan sebagai metode pengendalian hayati.';
+                    break;
+                case 'buah_dimakan':
+                    diagnosis = 'Hama: Monyet';
+                    treatment = 'Pengendalian: Campurkan terasi yang dibakar dengan kapur barus. Aroma yang kuat dari campuran ini dapat mengusir monyet.';
+                    break;
+                default:
+                    diagnosis = 'Gejala tidak ditemukan.';
+                    treatment = '';
+            }
+
+            diagnosisP.textContent = diagnosis;
+            treatmentP.textContent = treatment;
+            resultDiv.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
